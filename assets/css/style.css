@@ -1,3 +1,8 @@
+* {
+    font-family: 'Open Sans', sans-serif;
+    margin: 0px;
+}
+
 header {
     display: block;
     background-color: cornflowerblue;
@@ -14,17 +19,33 @@ header {
     background-color: whitesmoke;
     width: 30vw;
     height: 85vh;
+    margin-right: 10px;
+    margin-top: 10px;
+   margin-left: 10px;
 }
 
-.five-day {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
+.current-day {
+    display: block;
     border: solid black;
     width: 80vw;
     background-color: whitesmoke;
-    height: 30vh;
-    /* margin-top: 400px; */
+    height: 40vh;
+    margin-top: 400px;
+    margin-right: 10px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.five-day {
+display: block;
+border: solid black;
+width: 80vw;
+height: 44.5vh;
+margin-top: 290px;
+text-align: center;
+
+
+
 }
 
 .main-container {
