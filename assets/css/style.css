@@ -1,9 +1,9 @@
 header {
-    display: flex;
-    justify-content: center;
+    display: block;
     background-color: cornflowerblue;
     border: solid black;
-    border-bottom: 0px;
+    text-align: center;
+    /* border-bottom: 0px; */
 }
 
 .left-panel {
@@ -14,7 +14,6 @@ header {
     background-color: whitesmoke;
     width: 30vw;
     height: 85vh;
-    border-right: 0px;
 }
 
 .five-day {
@@ -24,13 +23,22 @@ header {
     border: solid black;
     width: 80vw;
     background-color: whitesmoke;
+    height: 30vh;
+    /* margin-top: 400px; */
 }
 
 .main-container {
     display: flex;
 
 }
+
  
 h2 {
     border-bottom: solid cornflowerblue;
 }
+
+.cards {
+    display: flex;
+
+}
+

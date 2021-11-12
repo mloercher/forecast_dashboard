@@ -1,20 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/css/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <h1>WEATHER DASHBOARD</h1>
+      <h1>WEATHER DASHBOARD</h1>
+      <h3 id="currentDay"></h3>
     </header>
     <div class="main-container">
-    <div class="left-panel"><h2>Search for a City</h2></div>
-    <div class="five-day"><h2>Five Day Forecast</h2></div>
+      <div class="left-panel"><h2>Search for a City</h2>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Enter City Name" aria-label="Recipient's username" aria-describedby="button-addon2">
+            <button class="btn btn-outline-secondary" type="button" id="button-addon2">Button</button>
+          </div>
     </div>
-    <script src="./assets/js/script.js"></script>  
-</body>
+      <div class="current-city"></div>
+      <div class="five-day">
+        <h2>Five Day Forecast</h2>
+        <div class="cards"></div>
+      </div>
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="./assets/js/script.js"></script>
+    <!-- <script src="./assets/js/test.js"></script> -->
+  </body>
 </html>
