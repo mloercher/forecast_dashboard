@@ -1,0 +1,36 @@
+header {
+    display: flex;
+    justify-content: center;
+    background-color: cornflowerblue;
+    border: solid black;
+    border-bottom: 0px;
+}
+
+.left-panel {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border: solid black;
+    background-color: whitesmoke;
+    width: 30vw;
+    height: 85vh;
+    border-right: 0px;
+}
+
+.five-day {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    border: solid black;
+    width: 80vw;
+    background-color: whitesmoke;
+}
+
+.main-container {
+    display: flex;
+
+}
+ 
+h2 {
+    border-bottom: solid cornflowerblue;
+}
