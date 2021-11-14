@@ -1,8 +1,24 @@
 var searchHistory = [];
 
 var apiKey = "128c8c746b69ffc06f48c91a2851d72f";
+//function Load History_________________________________________________________________
+function loadHistory() {
+  var history = localStorage.getItem("searched-city");
+  history = JSON.parse(history);
+  // for ( i in history ) {
 
-function search(cityName, latitude, longitude) {
+  // }
+  for ( i = 0 ; i < history.length ; i++ ) {
+    searchHistory.push(history[i]);
+  }
+}
+
+function saveHistory(city) {
+  searchHistory.push(city);
+  localStorage.setItem("searched-city", JSON.stringify(searchHistory));
+}
+
+function search(cityName) {
   var urlLocation = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}`;
   fetch(urlLocation)
     .then((res) => res.json())
@@ -149,9 +165,7 @@ function search(cityName, latitude, longitude) {
             )
             .attr("alt", data.list[32].weather[0].main);
           console.log(data.list[32].main.temp_max);
-          $("#temp-day-5")
-            .empty()
-            .append("Temp: " + data.list[32].main.temp_max + "F");
+          $("#temp-day-5").empty().append("Temp: " + data.list[32].main.temp_max + "F");
           console.log(data.list[32].main.humidity);
           $("#humidity-day-5")
             .empty()
@@ -160,34 +174,21 @@ function search(cityName, latitude, longitude) {
           $("#wind-day-5")
             .empty()
             .append("Wind: " + data.list[32].wind.speed + " MPH");
+
+          //Adding user inputs to search history array
+          var searchedCity = $("#citysearch").val();
+              saveHistory(searchedCity);
+          console.log(searchHistory);  
         });
     });
 }
 
-//when save button is clicked, store input to local storage
-// searchBtn.on("click", function () {
-//     let time = $(this).siblings(".hour").text();
-//     let usrTxt = $(this).siblings(".description").val();
-//    console.log(usrTxt);
-//    console.log(time);
-//    localStorage.setItem(time, usrTxt);
-//  });
-
-// get the input first
+// Event listener ---> User clicks, enters city, search function is called with user input
 document.getElementById("searchBtn").addEventListener("click", function () {
   var citySearchEl = document.querySelector("#citysearch").value;
   search(citySearchEl);
-
-  var searchedCity = $("#citysearch").val();
-  localStorage.setItem("searched city", searchedCity);
-  searchHistory.push(document.getElementById("citysearch").value);
-  console.log(searchHistory);
-
 });
-
-
-
-
+loadHistory();
 // Get date at top of screen
 const today = moment().format("LL");
 $("#currentDay")
