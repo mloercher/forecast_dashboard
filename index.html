@@ -1,65 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=PT+Sans+Narrow:wght@400;700&family=Staatliches&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="./assets/css/style.css" />
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather DASH</title>
-  </head>
-  <body>
-    <header>
-      <h1>WEATHER DASHBOARD</h1>
-      <h3 id="currentDay"></h3>
-    </header>
-    <div class="main-container">
-      <div class="left-panel">
-        <h2>Search for a City</h2>
-        <!-- bootstrap input  -->
-        <div class="input-group mb-3">
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Enter City Name"
-            aria-label="Recipient's username"
-            aria-describedby="button-addon2"
-          />
-          <button
-            class="btn btn-outline-secondary"
-            type="button"
-            id="button-addon2"
-          >
-            Button
-          </button>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="./assets/css/style.css" rel="stylesheet">
+</head>
+<body>
+    <header><h1>Weather Dashboard</h1></header>
+    <main>
+        <div class="col">
+            <aside class="col-lg-3 pb-4" >
+                <h2 id="searchHeading" class="mt-1 h3 form-label">Search for a City</h2>
+                <input type="search" id="citysearch">
+                <button id="searchBtn">Search</button>
+                <hr class="weather-hr">
+                <div class="history" id="history"></div>
+            </aside>
+            <div class="col-lg-9 pb-4" id="rightside">
+                <div class="mt-1" id="todayWeatherContainer">
+                    <h2 id="currentDay"></h2>
+                    <h3 id="temp-current"></h3>
+                    <h3 id="wind-current"></h3>
+                    <h3 id="humidity-current"></h3>
+                    <h3 class="UV" id="uvi-current"></h3>
+                </div>
+                <!-- FIVE DAY BELOW -->
+                <div class="card-deck fiveday" id="5-day">
+
+                    <div class="card" style="width: 15%; margin: 0;">
+                        <h4 class="card-title" id="date-1"></h4>
+                        <div class="card-body">
+                            <img class="icon" id="forecast-1">                          
+                          <ul style="list-style-type: none; margin: 0; padding: 0;">
+                              <li id="temp-day-1"></li>
+                              <li id="wind-day-1"></li>
+                              <li id="humidity-day-1"></li>
+                          </ul></div></div>
+
+                        <div class="card" style="width: 15%;">
+                           <h4 class="card-title" id="date-2"></h4>
+                           <div class="card-body">
+                            <img class="icon" id="forecast-2">
+                             <ul style="list-style-type: none; margin: 0; padding: 0;">
+                                 <li id="temp-day-2"></li>
+                                 <li id="wind-day-2"></li>
+                                 <li id="humidity-day-2"></li>
+                             </ul></div></div>
+
+                        <div class="card" style="width: 15%;">
+                        <h4 class="card-title" id="date-3"></h4>
+                        <div class="card-body">
+                            <img class="icon" id="forecast-3">
+                          <ul style="list-style-type: none; margin: 0; padding: 0;">
+                              <li id="temp-day-3"></li>
+                              <li id="wind-day-3"></li>
+                              <li id="humidity-day-3"></li>
+                          </ul></div></div>
+
+                        <div class="card" style="width: 15%;">
+                        <h4 class="card-title" id="date-4"></h4>
+                        <div class="card-body">                            
+                            <img class="icon" id="forecast-4">
+                          <ul style="list-style-type: none; margin: 0; padding: 0;">
+                              <li id="temp-day-4"></li>
+                              <li id="wind-day-4"></li>
+                              <li id="humidity-day-4"></li>
+                          </ul></div></div>
+
+                        <div class="card" style="width: 15%;">
+                        <h4 class="card-title" id="date-5"></h4>
+                        <div class="card-body">                            
+                            <img class="icon" id="forecast-5">
+                          <ul style="list-style-type: none; margin: 0; padding: 0;">
+                              <li id="temp-day-5"></li>
+                              <li id="wind-day-5"></li>
+                              <li id="humidity-day-5"></li>
+                          </ul></div></div>
+
+                        </div>
         </div>
-        <!-- end bootstrap input -->
-      </div>
-      <div class="current-day">
-        <h2>Current Day</h2>
-        <div class="five-day" id="cards">
-          <h2>Five Day Forecast</h2>
-        </div>
-      </div>
-    </div>
-    <script
-      src="https://code.jquery.com/jquery-3.6.0.min.js"
-      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-      crossorigin="anonymous"
-    ></script>
+    </main>  
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>  
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="./assets/js/script.js"></script>
-    <!-- <script src="./assets/js/test.js"></script> -->
-  </body>
+</body>
 </html>
