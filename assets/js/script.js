@@ -180,6 +180,8 @@ document.getElementById("searchBtn").addEventListener("click", function () {
 
   var searchedCity = $("#citysearch").val();
   localStorage.setItem("searched city", searchedCity);
+  searchHistory.push(document.getElementById("citysearch").value);
+  console.log(searchHistory);
 
 });
 
