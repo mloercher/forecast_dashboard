@@ -2,17 +2,18 @@ var searchHistory = [];
 var apiKey = "128c8c746b69ffc06f48c91a2851d72f";
 
 //function save history__________________________________________________________________
-function saveHistory(city) {
-  searchHistory.push(city);
+function saveHistory(data) { 
+  searchHistory.push(data);
   localStorage.setItem("searched-city", JSON.stringify(searchHistory));
 }
 
-
-
-// function Load History_________________________________________________________________
+// function Load History________________________________________________________
 function loadHistory() {
   var history = localStorage.getItem("searched-city");
   history = JSON.parse(history);
+  for(i in history) {
+    searchHistory.push(history[i]);
+  }
 };
 // function create searchistory button
 
@@ -24,14 +25,25 @@ function loadHistory() {
 // document.append(buttonEl);
 // };
 
+
+
+///CREATE BUTTON FOR SEARCHES_________________________________________________
 function createButton(city) {
-  var citySearchEl = document.querySelector("#citysearch").value;
+
   var buttonEl = document.createElement("button");
   buttonEl.setAttribute("data-search", city);
-  buttonEl.textContent = citySearchEl;
+  buttonEl.textContent = city;
   buttonEl.className = "btn btn-dark m-2"
   $("#history").append(buttonEl);
 }
+
+function historyBtn() {
+  // for (i = 0; i < searchHistory.length; i++)
+  for (i in searchHistory) {
+    createButton(searchHistory[i]) 
+  }
+};
+
 
 
 
@@ -204,14 +216,16 @@ function search(cityName) {
         });
     });
 }
-
+function clearHistory() {
+  localStorage.clear();
+  location.reload();
+};
 // Event listener ---> User clicks, enters city, search function is called with user input
 document.getElementById("searchBtn").addEventListener("click", function () {
   var citySearchEl = document.querySelector("#citysearch").value;
   search(citySearchEl);
-  createButton();
+  createButton(citySearchEl);
 });
-loadHistory();
 // Get date at top of screen
 const today = moment().format("LL");
 $("#currentDay")
@@ -219,9 +233,15 @@ $("#currentDay")
   .append("Today is: " + today);
 
 //event listener
-// document.getElementById("button-addon2").addEventListener("click", search);
+$(document).on("click",".btn", function() {
+  console.log("IN BUTTON FUNCTION");
+  var citySearchEl = $(this).attr("data-search");
+  search(citySearchEl);
+})
 
-//_____________________________________________________________________________________________
+loadHistory();
+//called function_________________________________________________________________
+historyBtn();
 
 //query selector, grab "button addon-2"
 //add listener event, click to search function
