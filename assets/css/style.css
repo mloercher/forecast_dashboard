@@ -33,6 +33,7 @@ ul{
     background-color: cornflowerblue;
     color: white;
     border: solid black;
+    padding: 20px;
 
 }
 
@@ -50,5 +51,5 @@ ul{
 .UV{
     width: fit-content;
     padding: 5px;
-    border-radius: 25%;
+    border-radius: 8%;
 }

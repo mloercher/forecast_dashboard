@@ -1,22 +1,40 @@
 var searchHistory = [];
-
 var apiKey = "128c8c746b69ffc06f48c91a2851d72f";
-//function Load History_________________________________________________________________
-function loadHistory() {
-  var history = localStorage.getItem("searched-city");
-  history = JSON.parse(history);
-  // for ( i in history ) {
 
-  // }
-  for ( i = 0 ; i < history.length ; i++ ) {
-    searchHistory.push(history[i]);
-  }
-}
-
+//function save history__________________________________________________________________
 function saveHistory(city) {
   searchHistory.push(city);
   localStorage.setItem("searched-city", JSON.stringify(searchHistory));
 }
+
+
+
+// function Load History_________________________________________________________________
+function loadHistory() {
+  var history = localStorage.getItem("searched-city");
+  history = JSON.parse(history);
+};
+// function create searchistory button
+
+// function createButton(citySearchEl) {
+// var buttonEl = document.createElement("button");
+// buttonEl.setAttribute("data-search", citySearchEl);
+// buttonEl.textContent = citySearchEl;
+// buttonEl.className = "history";
+// document.append(buttonEl);
+// };
+
+function createButton(city) {
+  var citySearchEl = document.querySelector("#citysearch").value;
+  var buttonEl = document.createElement("button");
+  buttonEl.setAttribute("data-search", city);
+  buttonEl.textContent = citySearchEl;
+  buttonEl.className = "btn btn-dark m-2"
+  $("#history").append(buttonEl);
+}
+
+
+
 
 function search(cityName) {
   var urlLocation = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}`;
@@ -36,17 +54,19 @@ function search(cityName) {
           console.log(data.current.temp);
           $("#temp-current")
             .empty()
-            .append(data.current.temp + " F");
+            .append("Temperature:" + " " + data.current.temp + " F");
           console.log(data.current.wind_speed);
           $("#wind-current")
             .empty()
-            .append(data.current.wind_speed + " MPH");
+            .append("Wind Speed:" + " " + data.current.wind_speed + " MPH");
           console.log(data.current.humidity);
           $("#humidity-current")
             .empty()
-            .append(data.current.humidity + "%");
+            .append("Humidity:" + " " + data.current.humidity + "%");
           console.log(data.current.uvi);
-          $("#uvi-current").empty().append(data.current.uvi);
+          $("#uvi-current")
+            .empty()
+            .append("UV Index:" + " " + data.current.uvi);
           //________If statement to determine color of UVI index box
           if (data.current.uvi < 2) {
             $("#uvi-current").addClass("low");
@@ -165,7 +185,9 @@ function search(cityName) {
             )
             .attr("alt", data.list[32].weather[0].main);
           console.log(data.list[32].main.temp_max);
-          $("#temp-day-5").empty().append("Temp: " + data.list[32].main.temp_max + "F");
+          $("#temp-day-5")
+            .empty()
+            .append("Temp: " + data.list[32].main.temp_max + "F");
           console.log(data.list[32].main.humidity);
           $("#humidity-day-5")
             .empty()
@@ -177,8 +199,8 @@ function search(cityName) {
 
           //Adding user inputs to search history array
           var searchedCity = $("#citysearch").val();
-              saveHistory(searchedCity);
-          console.log(searchHistory);  
+          saveHistory(searchedCity);
+          console.log(searchHistory);
         });
     });
 }
@@ -187,6 +209,7 @@ function search(cityName) {
 document.getElementById("searchBtn").addEventListener("click", function () {
   var citySearchEl = document.querySelector("#citysearch").value;
   search(citySearchEl);
+  createButton();
 });
 loadHistory();
 // Get date at top of screen
