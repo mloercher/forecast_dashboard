@@ -15,16 +15,6 @@ function loadHistory() {
     searchHistory.push(history[i]);
   }
 };
-// function create searchistory button
-
-// function createButton(citySearchEl) {
-// var buttonEl = document.createElement("button");
-// buttonEl.setAttribute("data-search", citySearchEl);
-// buttonEl.textContent = citySearchEl;
-// buttonEl.className = "history";
-// document.append(buttonEl);
-// };
-
 
 
 ///CREATE BUTTON FOR SEARCHES_________________________________________________
@@ -43,10 +33,6 @@ function historyBtn() {
     createButton(searchHistory[i]) 
   }
 };
-
-
-
-
 
 function search(cityName) {
   var urlLocation = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}`;
@@ -242,21 +228,3 @@ $(document).on("click",".btn", function() {
 loadHistory();
 //called function_________________________________________________________________
 historyBtn();
-
-//query selector, grab "button addon-2"
-//add listener event, click to search function
-//search
-// var url = "https://api.openweathermap.org/data/2.5/onecall?q=New%20York&appid=02b2070ab2a3000118358e8e0fa9f65d";
-
-// var urlLocation = "api.openweathermap.org/data/2.5/weather?q={city name}&appid= 02b2070ab2a3000118358e8e0fa9f65d"
-
-// var cityName = "Los Angeles";
-
-//query selections
-// var searchBtn = document.querySelector("button-addon2");
-// function testBtn() {
-//     console.log('here');
-// }
-// function selectCity() {
-//     var
-// }
