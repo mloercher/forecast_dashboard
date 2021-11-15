@@ -10,4 +10,4 @@
 
 ![past-city-searches-and-clear-history](./assets/images/search-history.png)
 
-Link to deployed application: 
+Link to deployed application: https://mloercher.github.io/forecast_dashboard/ 💭
