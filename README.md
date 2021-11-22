@@ -10,4 +10,5 @@
 
 ![past-city-searches-and-clear-history](./assets/images/search-history.png)
 
+#### Made in collaboration with: Tony Geritano, Eliezer Pagan and Brian Arsenault
 Link to deployed application: https://mloercher.github.io/forecast_dashboard/ 💭
